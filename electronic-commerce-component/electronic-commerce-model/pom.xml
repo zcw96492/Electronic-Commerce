@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>electronic-commerce-component</artifactId>
+        <groupId>com.newcore</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>electronic-commerce-model</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>electronic-commerce-model</name>
+    <description>电商平台-模型部分</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <electronic-commerce-utils.version>1.0.0-SNAPSHOT</electronic-commerce-utils.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.newcore</groupId>
+            <artifactId>electronic-commerce-utils</artifactId>
+            <version>${electronic-commerce-utils.version}</version>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>electronic-commerce-base-model</module>
+        <module>electronic-commerce-user-model</module>
+    </modules>
+</project>

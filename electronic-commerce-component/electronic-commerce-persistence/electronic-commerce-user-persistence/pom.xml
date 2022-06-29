@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>electronic-commerce-persistence</artifactId>
+        <groupId>com.newcore</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>electronic-commerce-user-persistence</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <name>electronic-commerce-user-persistence</name>
+    <description>电商平台-用户模块持久层部分</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <electronic-commerce-base-model.version>1.0.0-SNAPSHOT</electronic-commerce-base-model.version>
+        <electronic-commerce-user-model.version>1.0.0-SNAPSHOT</electronic-commerce-user-model.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.newcore</groupId>
+            <artifactId>electronic-commerce-base-model</artifactId>
+            <version>${electronic-commerce-base-model.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.newcore</groupId>
+            <artifactId>electronic-commerce-user-model</artifactId>
+            <version>${electronic-commerce-user-model.version}</version>
+        </dependency>
+    </dependencies>
+</project>
