@@ -10,12 +10,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>electronic-commerce-cache</artifactId>
+    <artifactId>electronic-commerce-batch</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>electronic-commerce-cache</name>
-    <description>电商平台项目-缓存服务部分</description>
+    <name>electronic-commerce-batch</name>
+    <description>电商平台项目-批处理部分</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,6 @@
     </properties>
 
     <modules>
-        <module>electronic-commerce-user-cache</module>
-        <module>electronic-commerce-order-cache</module>
+        <module>electronic-commerce-user-batch</module>
     </modules>
 </project>
