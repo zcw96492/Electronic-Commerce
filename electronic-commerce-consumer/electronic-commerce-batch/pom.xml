@@ -26,5 +26,6 @@
 
     <modules>
         <module>electronic-commerce-user-batch</module>
+        <module>electronic-commerce-order-batch</module>
     </modules>
 </project>

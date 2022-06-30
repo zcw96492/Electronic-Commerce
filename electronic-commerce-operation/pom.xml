@@ -46,6 +46,7 @@
     </dependencies>
 
     <modules>
+        <module>electronic-commerce-gateway</module>
         <module>electronic-commerce-monitor</module>
     </modules>
 </project>

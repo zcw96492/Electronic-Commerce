@@ -23,4 +23,16 @@
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
+
+    <modules>
+        <module>electronic-commerce-order-provider</module>
+        <module>electronic-commerce-user-provider</module>
+        <module>electronic-commerce-logistics-provider</module>
+        <module>electronic-commerce-commodity-provider</module>
+        <module>electronic-commerce-payment-provider</module>
+        <module>electronic-commerce-mail-provider</module>
+        <module>electronic-commerce-search-provider</module>
+        <module>electronic-commerce-repository-provider</module>
+        <module>electronic-commerce-shop-provider</module>
+    </modules>
 </project>
