@@ -36,5 +36,13 @@
     <modules>
         <module>electronic-commerce-base-model</module>
         <module>electronic-commerce-user-model</module>
+        <module>electronic-commerce-logistics-model</module>
+        <module>electronic-commerce-mail-model</module>
+        <module>electronic-commerce-order-model</module>
+        <module>electronic-commerce-payment-model</module>
+        <module>electronic-commerce-repository-model</module>
+        <module>electronic-commerce-search-model</module>
+        <module>electronic-commerce-shop-model</module>
+        <module>electronic-commerce-commodity-model</module>
     </modules>
 </project>

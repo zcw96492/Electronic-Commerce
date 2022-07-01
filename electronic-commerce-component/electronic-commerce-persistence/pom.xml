@@ -45,5 +45,13 @@
     <modules>
         <module>electronic-commerce-atom-persistence</module>
         <module>electronic-commerce-user-persistence</module>
+        <module>electronic-commerce-commodity-persistence</module>
+        <module>electronic-commerce-logistics-persistence</module>
+        <module>electronic-commerce-mail-persistence</module>
+        <module>electronic-commerce-repository-persistence</module>
+        <module>electronic-commerce-shop-persistence</module>
+        <module>electronic-commerce-search-persistence</module>
+        <module>electronic-commerce-payment-persistence</module>
+        <module>electronic-commerce-order-persistence</module>
     </modules>
 </project>
