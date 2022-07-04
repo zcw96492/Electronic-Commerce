@@ -27,5 +27,12 @@
     <modules>
         <module>electronic-commerce-user-cache</module>
         <module>electronic-commerce-order-cache</module>
+        <module>electronic-commerce-commodity-cache</module>
+        <module>electronic-commerce-mail-cache</module>
+        <module>electronic-commerce-logistics-cache</module>
+        <module>electronic-commerce-payment-cache</module>
+        <module>electronic-commerce-shop-cache</module>
+        <module>electronic-commerce-search-cache</module>
+        <module>electronic-commerce-repository-cache</module>
     </modules>
 </project>

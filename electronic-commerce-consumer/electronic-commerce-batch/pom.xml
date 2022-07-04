@@ -27,5 +27,12 @@
     <modules>
         <module>electronic-commerce-user-batch</module>
         <module>electronic-commerce-order-batch</module>
+        <module>electronic-commerce-mail-batch</module>
+        <module>electronic-commerce-logistics-batch</module>
+        <module>electronic-commerce-commodity-batch</module>
+        <module>electronic-commerce-payment-batch</module>
+        <module>electronic-commerce-repository-batch</module>
+        <module>electronic-commerce-search-batch</module>
+        <module>electronic-commerce-shop-batch</module>
     </modules>
 </project>
