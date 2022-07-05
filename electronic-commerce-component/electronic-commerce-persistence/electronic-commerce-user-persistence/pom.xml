@@ -22,21 +22,50 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <electronic-commerce-base-model.version>1.0.0-SNAPSHOT</electronic-commerce-base-model.version>
         <electronic-commerce-user-model.version>1.0.0-SNAPSHOT</electronic-commerce-user-model.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.newcore</groupId>
-            <artifactId>electronic-commerce-base-model</artifactId>
-            <version>${electronic-commerce-base-model.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.newcore</groupId>
             <artifactId>electronic-commerce-user-model</artifactId>
             <version>${electronic-commerce-user-model.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- Maven源码插件(要将源码打成jar包) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <attach>true</attach>
+                    <finalName>${project.artifactId}</finalName>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Maven编译插件(设置编译版本) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
