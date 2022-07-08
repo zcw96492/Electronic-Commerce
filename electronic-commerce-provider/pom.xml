@@ -78,14 +78,14 @@
     </dependencies>
 
     <modules>
-        <module>electronic-commerce-order-provider</module>
-        <module>electronic-commerce-user-provider</module>
-        <module>electronic-commerce-logistics-provider</module>
         <module>electronic-commerce-commodity-provider</module>
-        <module>electronic-commerce-payment-provider</module>
+        <module>electronic-commerce-logistics-provider</module>
         <module>electronic-commerce-mail-provider</module>
-        <module>electronic-commerce-search-provider</module>
+        <module>electronic-commerce-order-provider</module>
+        <module>electronic-commerce-payment-provider</module>
         <module>electronic-commerce-repository-provider</module>
+        <module>electronic-commerce-search-provider</module>
         <module>electronic-commerce-shop-provider</module>
+        <module>electronic-commerce-user-provider</module>
     </modules>
 </project>

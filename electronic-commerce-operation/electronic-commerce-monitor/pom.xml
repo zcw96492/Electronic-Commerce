@@ -103,7 +103,7 @@
                             <!-- 所有的依赖项应该位于lib文件夹 -->
                             <classpathPrefix>lib/</classpathPrefix>
                             <!-- 当用户使用lib命令执行JAR文件时,使用该元素定义将要执行的类名 -->
-                            <mainClass>com.newcore.laboratory.provider.LaboratoryTraceProviderApplication</mainClass>
+                            <mainClass>com.newcore.electronic.commerce.monitor.ElectronicCommerceMonitorApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
