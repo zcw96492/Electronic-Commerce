@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>electronic-commerce-commodity-persistence</name>
+    <name>${project.artifactId}</name>
     <description>电商平台-商品模块持久层部分</description>
 
     <properties>

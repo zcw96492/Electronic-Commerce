@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>electronic-commerce-user-batch</name>
+    <name>${project.artifactId}</name>
     <description>电商平台项目-批处理部分</description>
 
     <properties>

@@ -14,7 +14,7 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>electronic-commerce-atom-persistence</name>
+    <name>${project.artifactId}</name>
     <description>电商平台-原子持久层部分</description>
 
     <properties>

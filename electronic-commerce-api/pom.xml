@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
 
-    <name>electronic-commerce-api</name>
+    <name>${project.artifactId}</name>
     <description>电商平台-API</description>
 
     <properties>
