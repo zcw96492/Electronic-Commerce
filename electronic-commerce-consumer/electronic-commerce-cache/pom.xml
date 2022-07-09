@@ -24,6 +24,14 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <!-- SpringBoot + RedisTemplate -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+    </dependencies>
+
     <modules>
         <module>electronic-commerce-user-cache</module>
         <module>electronic-commerce-order-cache</module>
