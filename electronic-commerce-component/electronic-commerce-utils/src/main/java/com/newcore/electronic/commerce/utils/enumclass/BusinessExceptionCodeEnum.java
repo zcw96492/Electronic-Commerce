@@ -14,6 +14,8 @@ public enum BusinessExceptionCodeEnum {
     SUCCESS("00000","success"),
     FAIL("99999","fail"),
 
+    B0001("B0001","创建任务失败"),
+
     F0322("F0322","文件未找到"),
     F0323("F0323","文件下载出错");
 

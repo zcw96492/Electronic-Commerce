@@ -22,7 +22,35 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
+        <electronic-commerce-atom-persistence.version>1.0.0-SNAPSHOT</electronic-commerce-atom-persistence.version>
     </properties>
+
+    <dependencies>
+        <!-- 原子Dao依赖 -->
+        <dependency>
+            <groupId>com.newcore</groupId>
+            <artifactId>electronic-commerce-atom-persistence</artifactId>
+            <version>${electronic-commerce-atom-persistence.version}</version>
+        </dependency>
+
+        <!-- SpringCloud + Batch -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-batch</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Quartz -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+    </dependencies>
 
     <modules>
         <module>electronic-commerce-user-batch</module>
