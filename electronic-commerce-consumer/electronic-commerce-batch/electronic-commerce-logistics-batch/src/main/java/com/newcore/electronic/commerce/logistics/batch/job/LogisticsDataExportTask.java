@@ -1,4 +1,4 @@
-package com.newcore.electronic.commerce.commodity.batch.job;
+package com.newcore.electronic.commerce.logistics.batch.job;
 
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Component;
  */
 @DisallowConcurrentExecution
 @Component
-public class CommodityDataExportTask implements Job {
+public class LogisticsDataExportTask implements Job {
 
-    private static final Logger logger = LoggerFactory.getLogger(CommodityDataExportTask.class);
+    private static final Logger logger = LoggerFactory.getLogger(LogisticsDataExportTask.class);
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        logger.info("商品批作业服务 || 数据导出批作业 || 开始执行......");
+        logger.info("物流批作业服务 || 数据导出批作业 || 开始执行......");
     }
 }

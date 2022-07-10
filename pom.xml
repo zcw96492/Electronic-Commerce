@@ -33,5 +33,6 @@
         <module>electronic-commerce-operation</module>
         <module>electronic-commerce-provider</module>
         <module>electronic-commerce-consumer</module>
+        <module>electronic-commerce-document</module>
     </modules>
 </project>
