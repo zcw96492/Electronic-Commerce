@@ -30,17 +30,24 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
+        <!-- H2数据库依赖 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.212</version>
+        </dependency>
     </dependencies>
 
     <modules>
-        <module>electronic-commerce-user-cache</module>
-        <module>electronic-commerce-order-cache</module>
         <module>electronic-commerce-commodity-cache</module>
-        <module>electronic-commerce-mail-cache</module>
         <module>electronic-commerce-logistics-cache</module>
+        <module>electronic-commerce-mail-cache</module>
+        <module>electronic-commerce-order-cache</module>
         <module>electronic-commerce-payment-cache</module>
-        <module>electronic-commerce-shop-cache</module>
-        <module>electronic-commerce-search-cache</module>
         <module>electronic-commerce-repository-cache</module>
+        <module>electronic-commerce-search-cache</module>
+        <module>electronic-commerce-shop-cache</module>
+        <module>electronic-commerce-user-cache</module>
     </modules>
 </project>
