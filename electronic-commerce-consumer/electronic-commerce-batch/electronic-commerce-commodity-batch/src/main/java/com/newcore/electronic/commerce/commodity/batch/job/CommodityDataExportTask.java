@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * 数据导出批作业
+ * 商品数据导出批作业
  * @author zhouchaowei
  */
 @DisallowConcurrentExecution
