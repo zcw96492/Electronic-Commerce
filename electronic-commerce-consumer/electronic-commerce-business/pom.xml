@@ -26,5 +26,6 @@
 
     <modules>
         <module>electronic-commerce-login-business</module>
+        <module>electronic-commerce-manage-business</module>
     </modules>
 </project>
