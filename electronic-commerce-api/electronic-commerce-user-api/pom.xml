@@ -22,7 +22,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
+        <electronic-commerce-user-model.version>1.0.0-SNAPSHOT</electronic-commerce-user-model.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.newcore</groupId>
+            <artifactId>electronic-commerce-user-model</artifactId>
+            <version>${electronic-commerce-user-model.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>

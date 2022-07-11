@@ -25,14 +25,14 @@
     </properties>
 
     <modules>
-        <module>electronic-commerce-user-api</module>
         <module>electronic-commerce-commodity-api</module>
-        <module>electronic-commerce-mail-api</module>
         <module>electronic-commerce-logistics-api</module>
-        <module>electronic-commerce-payment-api</module>
-        <module>electronic-commerce-search-api</module>
+        <module>electronic-commerce-mail-api</module>
         <module>electronic-commerce-order-api</module>
-        <module>electronic-commerce-shop-api</module>
+        <module>electronic-commerce-payment-api</module>
         <module>electronic-commerce-repository-api</module>
+        <module>electronic-commerce-search-api</module>
+        <module>electronic-commerce-shop-api</module>
+        <module>electronic-commerce-user-api</module>
     </modules>
 </project>
