@@ -27,15 +27,27 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>com.newcore</groupId>
             <artifactId>electronic-commerce-utils</artifactId>
             <version>${electronic-commerce-utils.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
     <modules>
         <module>electronic-commerce-base-model</module>
-        <module>electronic-commerce-user-model</module>
+        <module>electronic-commerce-commodity-model</module>
         <module>electronic-commerce-logistics-model</module>
         <module>electronic-commerce-mail-model</module>
         <module>electronic-commerce-order-model</module>
@@ -43,6 +55,6 @@
         <module>electronic-commerce-repository-model</module>
         <module>electronic-commerce-search-model</module>
         <module>electronic-commerce-shop-model</module>
-        <module>electronic-commerce-commodity-model</module>
+        <module>electronic-commerce-user-model</module>
     </modules>
 </project>
