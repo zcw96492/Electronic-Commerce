@@ -72,5 +72,6 @@
     <modules>
         <module>electronic-commerce-cache</module>
         <module>electronic-commerce-batch</module>
+        <module>electronic-commerce-business</module>
     </modules>
 </project>
