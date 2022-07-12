@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.ShopCommodityRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegister">
+    <id column="shop_commodity_register_id" jdbcType="INTEGER" property="shopCommodityRegisterId" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="shop_commodity_category_id" jdbcType="INTEGER" property="shopCommodityCategoryId" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="commodity_status" jdbcType="INTEGER" property="commodityStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shop_commodity_register_id, shop_id, commodity_id, shop_commodity_category_id, del_flag, 
+    commodity_status, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegisterExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHOP_COMMODITY_REGISTER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHOP_COMMODITY_REGISTER
+    where shop_commodity_register_id = #{shopCommodityRegisterId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SHOP_COMMODITY_REGISTER
+    where shop_commodity_register_id = #{shopCommodityRegisterId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegisterExample">
+    delete from SHOP_COMMODITY_REGISTER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegister">
+    insert into SHOP_COMMODITY_REGISTER (shop_commodity_register_id, shop_id, 
+      commodity_id, shop_commodity_category_id, del_flag, 
+      commodity_status, create_time, update_time
+      )
+    values (#{shopCommodityRegisterId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, 
+      #{commodityId,jdbcType=INTEGER}, #{shopCommodityCategoryId,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER}, 
+      #{commodityStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegister">
+    insert into SHOP_COMMODITY_REGISTER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopCommodityRegisterId != null">
+        shop_commodity_register_id,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="shopCommodityCategoryId != null">
+        shop_commodity_category_id,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="commodityStatus != null">
+        commodity_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopCommodityRegisterId != null">
+        #{shopCommodityRegisterId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="shopCommodityCategoryId != null">
+        #{shopCommodityCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="commodityStatus != null">
+        #{commodityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegisterExample" resultType="java.lang.Integer">
+    select count(*) from SHOP_COMMODITY_REGISTER
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHOP_COMMODITY_REGISTER
+    <set>
+      <if test="record.shopCommodityRegisterId != null">
+        shop_commodity_register_id = #{record.shopCommodityRegisterId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityId != null">
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopCommodityCategoryId != null">
+        shop_commodity_category_id = #{record.shopCommodityCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityStatus != null">
+        commodity_status = #{record.commodityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHOP_COMMODITY_REGISTER
+    set shop_commodity_register_id = #{record.shopCommodityRegisterId,jdbcType=INTEGER},
+      shop_id = #{record.shopId,jdbcType=INTEGER},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      shop_commodity_category_id = #{record.shopCommodityCategoryId,jdbcType=INTEGER},
+      del_flag = #{record.delFlag,jdbcType=INTEGER},
+      commodity_status = #{record.commodityStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegister">
+    update SHOP_COMMODITY_REGISTER
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="shopCommodityCategoryId != null">
+        shop_commodity_category_id = #{shopCommodityCategoryId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="commodityStatus != null">
+        commodity_status = #{commodityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where shop_commodity_register_id = #{shopCommodityRegisterId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopCommodityRegister">
+    update SHOP_COMMODITY_REGISTER
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      commodity_id = #{commodityId,jdbcType=INTEGER},
+      shop_commodity_category_id = #{shopCommodityCategoryId,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      commodity_status = #{commodityStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where shop_commodity_register_id = #{shopCommodityRegisterId,jdbcType=INTEGER}
+  </update>
+</mapper>

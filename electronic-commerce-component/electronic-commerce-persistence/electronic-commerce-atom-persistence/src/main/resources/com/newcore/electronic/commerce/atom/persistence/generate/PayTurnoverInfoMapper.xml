@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.PayTurnoverInfoMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfo">
+    <id column="pay_turnover_info_id" jdbcType="INTEGER" property="payTurnoverInfoId" />
+    <result column="pay_turnover_serial" jdbcType="VARCHAR" property="payTurnoverSerial" />
+    <result column="buyer_id" jdbcType="INTEGER" property="buyerId" />
+    <result column="order_serial" jdbcType="VARCHAR" property="orderSerial" />
+    <result column="pay_way" jdbcType="INTEGER" property="payWay" />
+    <result column="pay_amnt" jdbcType="DECIMAL" property="payAmnt" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    pay_turnover_info_id, pay_turnover_serial, buyer_id, order_serial, pay_way, pay_amnt, 
+    create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from PAY_TURNOVER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from PAY_TURNOVER_INFO
+    where pay_turnover_info_id = #{payTurnoverInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from PAY_TURNOVER_INFO
+    where pay_turnover_info_id = #{payTurnoverInfoId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfoExample">
+    delete from PAY_TURNOVER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfo">
+    insert into PAY_TURNOVER_INFO (pay_turnover_info_id, pay_turnover_serial, 
+      buyer_id, order_serial, pay_way, 
+      pay_amnt, create_time)
+    values (#{payTurnoverInfoId,jdbcType=INTEGER}, #{payTurnoverSerial,jdbcType=VARCHAR}, 
+      #{buyerId,jdbcType=INTEGER}, #{orderSerial,jdbcType=VARCHAR}, #{payWay,jdbcType=INTEGER}, 
+      #{payAmnt,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfo">
+    insert into PAY_TURNOVER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payTurnoverInfoId != null">
+        pay_turnover_info_id,
+      </if>
+      <if test="payTurnoverSerial != null">
+        pay_turnover_serial,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="orderSerial != null">
+        order_serial,
+      </if>
+      <if test="payWay != null">
+        pay_way,
+      </if>
+      <if test="payAmnt != null">
+        pay_amnt,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payTurnoverInfoId != null">
+        #{payTurnoverInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="payTurnoverSerial != null">
+        #{payTurnoverSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSerial != null">
+        #{orderSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="payAmnt != null">
+        #{payAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfoExample" resultType="java.lang.Integer">
+    select count(*) from PAY_TURNOVER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update PAY_TURNOVER_INFO
+    <set>
+      <if test="record.payTurnoverInfoId != null">
+        pay_turnover_info_id = #{record.payTurnoverInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.payTurnoverSerial != null">
+        pay_turnover_serial = #{record.payTurnoverSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerId != null">
+        buyer_id = #{record.buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderSerial != null">
+        order_serial = #{record.orderSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payWay != null">
+        pay_way = #{record.payWay,jdbcType=INTEGER},
+      </if>
+      <if test="record.payAmnt != null">
+        pay_amnt = #{record.payAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update PAY_TURNOVER_INFO
+    set pay_turnover_info_id = #{record.payTurnoverInfoId,jdbcType=INTEGER},
+      pay_turnover_serial = #{record.payTurnoverSerial,jdbcType=VARCHAR},
+      buyer_id = #{record.buyerId,jdbcType=INTEGER},
+      order_serial = #{record.orderSerial,jdbcType=VARCHAR},
+      pay_way = #{record.payWay,jdbcType=INTEGER},
+      pay_amnt = #{record.payAmnt,jdbcType=DECIMAL},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfo">
+    update PAY_TURNOVER_INFO
+    <set>
+      <if test="payTurnoverSerial != null">
+        pay_turnover_serial = #{payTurnoverSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSerial != null">
+        order_serial = #{orderSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null">
+        pay_way = #{payWay,jdbcType=INTEGER},
+      </if>
+      <if test="payAmnt != null">
+        pay_amnt = #{payAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where pay_turnover_info_id = #{payTurnoverInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.PayTurnoverInfo">
+    update PAY_TURNOVER_INFO
+    set pay_turnover_serial = #{payTurnoverSerial,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=INTEGER},
+      order_serial = #{orderSerial,jdbcType=VARCHAR},
+      pay_way = #{payWay,jdbcType=INTEGER},
+      pay_amnt = #{payAmnt,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where pay_turnover_info_id = #{payTurnoverInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

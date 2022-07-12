@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.OrderOperationRecordMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecord">
+    <id column="order_operation_record_id" jdbcType="INTEGER" property="orderOperationRecordId" />
+    <result column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="operation_psn" jdbcType="INTEGER" property="operationPsn" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="operation_time" jdbcType="TIMESTAMP" property="operationTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    order_operation_record_id, order_id, operation_psn, order_status, operation_time, 
+    create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ORDER_OPERATION_RECORD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ORDER_OPERATION_RECORD
+    where order_operation_record_id = #{orderOperationRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ORDER_OPERATION_RECORD
+    where order_operation_record_id = #{orderOperationRecordId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecordExample">
+    delete from ORDER_OPERATION_RECORD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecord">
+    insert into ORDER_OPERATION_RECORD (order_operation_record_id, order_id, 
+      operation_psn, order_status, operation_time, 
+      create_time, update_time)
+    values (#{orderOperationRecordId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+      #{operationPsn,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{operationTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecord">
+    insert into ORDER_OPERATION_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderOperationRecordId != null">
+        order_operation_record_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="operationPsn != null">
+        operation_psn,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="operationTime != null">
+        operation_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderOperationRecordId != null">
+        #{orderOperationRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="operationPsn != null">
+        #{operationPsn,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecordExample" resultType="java.lang.Integer">
+    select count(*) from ORDER_OPERATION_RECORD
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ORDER_OPERATION_RECORD
+    <set>
+      <if test="record.orderOperationRecordId != null">
+        order_operation_record_id = #{record.orderOperationRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.operationPsn != null">
+        operation_psn = #{record.operationPsn,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderStatus != null">
+        order_status = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.operationTime != null">
+        operation_time = #{record.operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ORDER_OPERATION_RECORD
+    set order_operation_record_id = #{record.orderOperationRecordId,jdbcType=INTEGER},
+      order_id = #{record.orderId,jdbcType=INTEGER},
+      operation_psn = #{record.operationPsn,jdbcType=INTEGER},
+      order_status = #{record.orderStatus,jdbcType=INTEGER},
+      operation_time = #{record.operationTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecord">
+    update ORDER_OPERATION_RECORD
+    <set>
+      <if test="orderId != null">
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="operationPsn != null">
+        operation_psn = #{operationPsn,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="operationTime != null">
+        operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_operation_record_id = #{orderOperationRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderOperationRecord">
+    update ORDER_OPERATION_RECORD
+    set order_id = #{orderId,jdbcType=INTEGER},
+      operation_psn = #{operationPsn,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      operation_time = #{operationTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where order_operation_record_id = #{orderOperationRecordId,jdbcType=INTEGER}
+  </update>
+</mapper>

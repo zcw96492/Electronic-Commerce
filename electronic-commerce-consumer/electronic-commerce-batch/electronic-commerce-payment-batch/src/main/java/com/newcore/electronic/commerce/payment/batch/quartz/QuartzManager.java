@@ -1,6 +1,6 @@
 package com.newcore.electronic.commerce.payment.batch.quartz;
 
-import com.newcore.electronic.commerce.base.model.TaskBaseModel;
+import com.newcore.electronic.commerce.base.model.custom.TaskBaseModel;
 import com.newcore.electronic.commerce.utils.exception.BusinessException;
 import org.quartz.*;
 import org.quartz.DateBuilder.IntervalUnit;

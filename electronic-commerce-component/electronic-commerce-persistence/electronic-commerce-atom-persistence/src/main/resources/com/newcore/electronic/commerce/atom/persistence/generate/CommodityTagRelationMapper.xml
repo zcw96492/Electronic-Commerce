@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.CommodityTagRelationMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelation">
+    <id column="commodity_tag_relation_id" jdbcType="INTEGER" property="commodityTagRelationId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="commodity_tag_id" jdbcType="INTEGER" property="commodityTagId" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    commodity_tag_relation_id, commodity_id, commodity_tag_id, del_flag, create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COMMODITY_TAG_RELATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COMMODITY_TAG_RELATION
+    where commodity_tag_relation_id = #{commodityTagRelationId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from COMMODITY_TAG_RELATION
+    where commodity_tag_relation_id = #{commodityTagRelationId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelationExample">
+    delete from COMMODITY_TAG_RELATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelation">
+    insert into COMMODITY_TAG_RELATION (commodity_tag_relation_id, commodity_id, 
+      commodity_tag_id, del_flag, create_time
+      )
+    values (#{commodityTagRelationId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, 
+      #{commodityTagId,jdbcType=INTEGER}, #{delFlag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelation">
+    insert into COMMODITY_TAG_RELATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityTagRelationId != null">
+        commodity_tag_relation_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="commodityTagId != null">
+        commodity_tag_id,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityTagRelationId != null">
+        #{commodityTagRelationId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityTagId != null">
+        #{commodityTagId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelationExample" resultType="java.lang.Integer">
+    select count(*) from COMMODITY_TAG_RELATION
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update COMMODITY_TAG_RELATION
+    <set>
+      <if test="record.commodityTagRelationId != null">
+        commodity_tag_relation_id = #{record.commodityTagRelationId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityId != null">
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityTagId != null">
+        commodity_tag_id = #{record.commodityTagId,jdbcType=INTEGER},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update COMMODITY_TAG_RELATION
+    set commodity_tag_relation_id = #{record.commodityTagRelationId,jdbcType=INTEGER},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      commodity_tag_id = #{record.commodityTagId,jdbcType=INTEGER},
+      del_flag = #{record.delFlag,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelation">
+    update COMMODITY_TAG_RELATION
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityTagId != null">
+        commodity_tag_id = #{commodityTagId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commodity_tag_relation_id = #{commodityTagRelationId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityTagRelation">
+    update COMMODITY_TAG_RELATION
+    set commodity_id = #{commodityId,jdbcType=INTEGER},
+      commodity_tag_id = #{commodityTagId,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where commodity_tag_relation_id = #{commodityTagRelationId,jdbcType=INTEGER}
+  </update>
+</mapper>

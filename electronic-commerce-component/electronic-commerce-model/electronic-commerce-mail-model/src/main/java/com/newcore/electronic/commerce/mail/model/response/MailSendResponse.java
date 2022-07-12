@@ -1,6 +1,6 @@
 package com.newcore.electronic.commerce.mail.model.response;
 
-import com.newcore.electronic.commerce.base.model.BaseModel;
+import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 import lombok.Data;
 
 import java.io.Serial;

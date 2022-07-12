@@ -37,16 +37,16 @@
         </javaTypeResolver>
 
         <!-- 指定生成model的路径 -->
-        <javaModelGenerator targetPackage="com.newcore.electronic.commerce.base.model"
+        <javaModelGenerator targetPackage="com.newcore.electronic.commerce.base.model.generate"
                             targetProject="/Users/zhouchaowei/workspace_idea/Electronic-Commerce/electronic-commerce-component/electronic-commerce-model/electronic-commerce-base-model/src/main/java" />
 
         <!--指定生成mapper.xml的路径-->
-        <sqlMapGenerator targetPackage="com.newcore.electronic.commerce.atom.persistence"
+        <sqlMapGenerator targetPackage="com.newcore.electronic.commerce.atom.persistence.generate"
                          targetProject="/Users/zhouchaowei/workspace_idea/Electronic-Commerce/electronic-commerce-component/electronic-commerce-persistence/electronic-commerce-atom-persistence/src/main/resources"/>
 
         <!--指定生成mapper接口的的路径-->
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.newcore.electronic.commerce.atom.persistence"
+                             targetPackage="com.newcore.electronic.commerce.atom.persistence.generate"
                              targetProject="/Users/zhouchaowei/workspace_idea/Electronic-Commerce/electronic-commerce-component/electronic-commerce-persistence/electronic-commerce-atom-persistence/src/main/java"/>
 
         <!-- 生成全部表tableName设为% -->

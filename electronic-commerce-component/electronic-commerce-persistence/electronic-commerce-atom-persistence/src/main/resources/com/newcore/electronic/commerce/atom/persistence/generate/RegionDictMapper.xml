@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.RegionDictMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.RegionDict">
+    <id column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="parent_region_id" jdbcType="INTEGER" property="parentRegionId" />
+    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
+    <result column="region_type" jdbcType="INTEGER" property="regionType" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    region_id, parent_region_id, region_name, region_type, post_code, longitude, latitude, 
+    create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDictExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from REGION_DICT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from REGION_DICT
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from REGION_DICT
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDictExample">
+    delete from REGION_DICT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDict">
+    insert into REGION_DICT (region_id, parent_region_id, region_name, 
+      region_type, post_code, longitude, 
+      latitude, create_time, update_time
+      )
+    values (#{regionId,jdbcType=INTEGER}, #{parentRegionId,jdbcType=INTEGER}, #{regionName,jdbcType=VARCHAR}, 
+      #{regionType,jdbcType=INTEGER}, #{postCode,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, 
+      #{latitude,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDict">
+    insert into REGION_DICT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regionId != null">
+        region_id,
+      </if>
+      <if test="parentRegionId != null">
+        parent_region_id,
+      </if>
+      <if test="regionName != null">
+        region_name,
+      </if>
+      <if test="regionType != null">
+        region_type,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
+      </if>
+      <if test="parentRegionId != null">
+        #{parentRegionId,jdbcType=INTEGER},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="regionType != null">
+        #{regionType,jdbcType=INTEGER},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDictExample" resultType="java.lang.Integer">
+    select count(*) from REGION_DICT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update REGION_DICT
+    <set>
+      <if test="record.regionId != null">
+        region_id = #{record.regionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentRegionId != null">
+        parent_region_id = #{record.parentRegionId,jdbcType=INTEGER},
+      </if>
+      <if test="record.regionName != null">
+        region_name = #{record.regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionType != null">
+        region_type = #{record.regionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.postCode != null">
+        post_code = #{record.postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.longitude != null">
+        longitude = #{record.longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.latitude != null">
+        latitude = #{record.latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update REGION_DICT
+    set region_id = #{record.regionId,jdbcType=INTEGER},
+      parent_region_id = #{record.parentRegionId,jdbcType=INTEGER},
+      region_name = #{record.regionName,jdbcType=VARCHAR},
+      region_type = #{record.regionType,jdbcType=INTEGER},
+      post_code = #{record.postCode,jdbcType=VARCHAR},
+      longitude = #{record.longitude,jdbcType=DOUBLE},
+      latitude = #{record.latitude,jdbcType=DOUBLE},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDict">
+    update REGION_DICT
+    <set>
+      <if test="parentRegionId != null">
+        parent_region_id = #{parentRegionId,jdbcType=INTEGER},
+      </if>
+      <if test="regionName != null">
+        region_name = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="regionType != null">
+        region_type = #{regionType,jdbcType=INTEGER},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.RegionDict">
+    update REGION_DICT
+    set parent_region_id = #{parentRegionId,jdbcType=INTEGER},
+      region_name = #{regionName,jdbcType=VARCHAR},
+      region_type = #{regionType,jdbcType=INTEGER},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where region_id = #{regionId,jdbcType=INTEGER}
+  </update>
+</mapper>

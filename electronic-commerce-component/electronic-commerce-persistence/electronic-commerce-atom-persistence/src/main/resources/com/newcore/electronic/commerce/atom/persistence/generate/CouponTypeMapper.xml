@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.CouponTypeMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.CouponType">
+    <id column="coupon_type_id" jdbcType="INTEGER" property="couponTypeId" />
+    <result column="coupon_type" jdbcType="INTEGER" property="couponType" />
+    <result column="coupon_name" jdbcType="VARCHAR" property="couponName" />
+    <result column="coupon_amnt" jdbcType="DECIMAL" property="couponAmnt" />
+    <result column="full_amnt" jdbcType="DECIMAL" property="fullAmnt" />
+    <result column="full_reduction_amnt" jdbcType="DECIMAL" property="fullReductionAmnt" />
+    <result column="reduce_amnt" jdbcType="DECIMAL" property="reduceAmnt" />
+    <result column="discount_proportion" jdbcType="DOUBLE" property="discountProportion" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    coupon_type_id, coupon_type, coupon_name, coupon_amnt, full_amnt, full_reduction_amnt, 
+    reduce_amnt, discount_proportion, del_flag, remark, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponTypeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COUPON_TYPE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COUPON_TYPE
+    where coupon_type_id = #{couponTypeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from COUPON_TYPE
+    where coupon_type_id = #{couponTypeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponTypeExample">
+    delete from COUPON_TYPE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponType">
+    insert into COUPON_TYPE (coupon_type_id, coupon_type, coupon_name, 
+      coupon_amnt, full_amnt, full_reduction_amnt, 
+      reduce_amnt, discount_proportion, del_flag, 
+      remark, create_time, update_time
+      )
+    values (#{couponTypeId,jdbcType=INTEGER}, #{couponType,jdbcType=INTEGER}, #{couponName,jdbcType=VARCHAR}, 
+      #{couponAmnt,jdbcType=DECIMAL}, #{fullAmnt,jdbcType=DECIMAL}, #{fullReductionAmnt,jdbcType=DECIMAL}, 
+      #{reduceAmnt,jdbcType=DECIMAL}, #{discountProportion,jdbcType=DOUBLE}, #{delFlag,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponType">
+    insert into COUPON_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponTypeId != null">
+        coupon_type_id,
+      </if>
+      <if test="couponType != null">
+        coupon_type,
+      </if>
+      <if test="couponName != null">
+        coupon_name,
+      </if>
+      <if test="couponAmnt != null">
+        coupon_amnt,
+      </if>
+      <if test="fullAmnt != null">
+        full_amnt,
+      </if>
+      <if test="fullReductionAmnt != null">
+        full_reduction_amnt,
+      </if>
+      <if test="reduceAmnt != null">
+        reduce_amnt,
+      </if>
+      <if test="discountProportion != null">
+        discount_proportion,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponTypeId != null">
+        #{couponTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="couponType != null">
+        #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="couponName != null">
+        #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAmnt != null">
+        #{couponAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fullAmnt != null">
+        #{fullAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fullReductionAmnt != null">
+        #{fullReductionAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="reduceAmnt != null">
+        #{reduceAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="discountProportion != null">
+        #{discountProportion,jdbcType=DOUBLE},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponTypeExample" resultType="java.lang.Integer">
+    select count(*) from COUPON_TYPE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update COUPON_TYPE
+    <set>
+      <if test="record.couponTypeId != null">
+        coupon_type_id = #{record.couponTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponType != null">
+        coupon_type = #{record.couponType,jdbcType=INTEGER},
+      </if>
+      <if test="record.couponName != null">
+        coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponAmnt != null">
+        coupon_amnt = #{record.couponAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fullAmnt != null">
+        full_amnt = #{record.fullAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fullReductionAmnt != null">
+        full_reduction_amnt = #{record.fullReductionAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reduceAmnt != null">
+        reduce_amnt = #{record.reduceAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountProportion != null">
+        discount_proportion = #{record.discountProportion,jdbcType=DOUBLE},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update COUPON_TYPE
+    set coupon_type_id = #{record.couponTypeId,jdbcType=INTEGER},
+      coupon_type = #{record.couponType,jdbcType=INTEGER},
+      coupon_name = #{record.couponName,jdbcType=VARCHAR},
+      coupon_amnt = #{record.couponAmnt,jdbcType=DECIMAL},
+      full_amnt = #{record.fullAmnt,jdbcType=DECIMAL},
+      full_reduction_amnt = #{record.fullReductionAmnt,jdbcType=DECIMAL},
+      reduce_amnt = #{record.reduceAmnt,jdbcType=DECIMAL},
+      discount_proportion = #{record.discountProportion,jdbcType=DOUBLE},
+      del_flag = #{record.delFlag,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponType">
+    update COUPON_TYPE
+    <set>
+      <if test="couponType != null">
+        coupon_type = #{couponType,jdbcType=INTEGER},
+      </if>
+      <if test="couponName != null">
+        coupon_name = #{couponName,jdbcType=VARCHAR},
+      </if>
+      <if test="couponAmnt != null">
+        coupon_amnt = #{couponAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fullAmnt != null">
+        full_amnt = #{fullAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="fullReductionAmnt != null">
+        full_reduction_amnt = #{fullReductionAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="reduceAmnt != null">
+        reduce_amnt = #{reduceAmnt,jdbcType=DECIMAL},
+      </if>
+      <if test="discountProportion != null">
+        discount_proportion = #{discountProportion,jdbcType=DOUBLE},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where coupon_type_id = #{couponTypeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.CouponType">
+    update COUPON_TYPE
+    set coupon_type = #{couponType,jdbcType=INTEGER},
+      coupon_name = #{couponName,jdbcType=VARCHAR},
+      coupon_amnt = #{couponAmnt,jdbcType=DECIMAL},
+      full_amnt = #{fullAmnt,jdbcType=DECIMAL},
+      full_reduction_amnt = #{fullReductionAmnt,jdbcType=DECIMAL},
+      reduce_amnt = #{reduceAmnt,jdbcType=DECIMAL},
+      discount_proportion = #{discountProportion,jdbcType=DOUBLE},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where coupon_type_id = #{couponTypeId,jdbcType=INTEGER}
+  </update>
+</mapper>

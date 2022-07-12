@@ -1,9 +1,9 @@
 package com.newcore.electronic.commerce.user.batch.listener;
 
-import com.newcore.electronic.commerce.atom.persistence.TdBatchTaskMapper;
-import com.newcore.electronic.commerce.base.model.TaskBaseModel;
-import com.newcore.electronic.commerce.base.model.TdBatchTask;
-import com.newcore.electronic.commerce.base.model.TdBatchTaskExample;
+import com.newcore.electronic.commerce.atom.persistence.generate.TdBatchTaskMapper;
+import com.newcore.electronic.commerce.base.model.custom.TaskBaseModel;
+import com.newcore.electronic.commerce.base.model.generate.TdBatchTask;
+import com.newcore.electronic.commerce.base.model.generate.TdBatchTaskExample;
 import com.newcore.electronic.commerce.user.batch.quartz.QuartzManager;
 import com.newcore.electronic.commerce.utils.enumclass.BusinessExceptionCodeEnum;
 import com.newcore.electronic.commerce.utils.enumclass.TASK_STATUS;

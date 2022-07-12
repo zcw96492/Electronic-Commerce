@@ -1,6 +1,6 @@
 package com.newcore.electronic.commerce.payment.model.response;
 
-import com.newcore.electronic.commerce.base.model.BaseModel;
+import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 
 import java.io.Serial;
 import java.io.Serializable;

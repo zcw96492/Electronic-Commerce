@@ -1,0 +1,864 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.OrderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.OrderInfo">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <result column="order_serial_num" jdbcType="VARCHAR" property="orderSerialNum" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="order_type" jdbcType="INTEGER" property="orderType" />
+    <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+    <result column="order_source" jdbcType="INTEGER" property="orderSource" />
+    <result column="order_amount_sum" jdbcType="DECIMAL" property="orderAmountSum" />
+    <result column="pay_type" jdbcType="INTEGER" property="payType" />
+    <result column="pay_amount" jdbcType="DECIMAL" property="payAmount" />
+    <result column="actual_pay_amount" jdbcType="DECIMAL" property="actualPayAmount" />
+    <result column="freight_amount" jdbcType="DECIMAL" property="freightAmount" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="logistics_company_id" jdbcType="INTEGER" property="logisticsCompanyId" />
+    <result column="logistics_serial_num" jdbcType="VARCHAR" property="logisticsSerialNum" />
+    <result column="integration" jdbcType="INTEGER" property="integration" />
+    <result column="beans" jdbcType="INTEGER" property="beans" />
+    <result column="receiver_name" jdbcType="VARCHAR" property="receiverName" />
+    <result column="receiver_phone" jdbcType="VARCHAR" property="receiverPhone" />
+    <result column="receiver_post_code" jdbcType="VARCHAR" property="receiverPostCode" />
+    <result column="receiver_province_id" jdbcType="INTEGER" property="receiverProvinceId" />
+    <result column="receiver_city" jdbcType="INTEGER" property="receiverCity" />
+    <result column="receiver_region" jdbcType="INTEGER" property="receiverRegion" />
+    <result column="receiver_street" jdbcType="INTEGER" property="receiverStreet" />
+    <result column="receiver_detail_address" jdbcType="INTEGER" property="receiverDetailAddress" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="confirm_status" jdbcType="INTEGER" property="confirmStatus" />
+    <result column="confirm_time" jdbcType="TIMESTAMP" property="confirmTime" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="comment_time" jdbcType="TIMESTAMP" property="commentTime" />
+    <result column="comment_star_level" jdbcType="INTEGER" property="commentStarLevel" />
+    <result column="payment_time" jdbcType="TIMESTAMP" property="paymentTime" />
+    <result column="logistics_time" jdbcType="TIMESTAMP" property="logisticsTime" />
+    <result column="use_integration" jdbcType="INTEGER" property="useIntegration" />
+    <result column="auto_confirm_time" jdbcType="TIMESTAMP" property="autoConfirmTime" />
+    <result column="bill_type" jdbcType="INTEGER" property="billType" />
+    <result column="bill_header" jdbcType="VARCHAR" property="billHeader" />
+    <result column="taxpayer_identification_num" jdbcType="VARCHAR" property="taxpayerIdentificationNum" />
+    <result column="bill_receiver_email" jdbcType="VARCHAR" property="billReceiverEmail" />
+    <result column="bill_receiver_phones" jdbcType="VARCHAR" property="billReceiverPhones" />
+    <result column="promotion_info" jdbcType="VARCHAR" property="promotionInfo" />
+    <result column="promotion_amount" jdbcType="DECIMAL" property="promotionAmount" />
+    <result column="integration_amount" jdbcType="DECIMAL" property="integrationAmount" />
+    <result column="coupon_amount" jdbcType="DECIMAL" property="couponAmount" />
+    <result column="discount_amount" jdbcType="DECIMAL" property="discountAmount" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    order_id, order_serial_num, user_id, order_type, order_status, order_source, order_amount_sum, 
+    pay_type, pay_amount, actual_pay_amount, freight_amount, shop_id, logistics_company_id, 
+    logistics_serial_num, integration, beans, receiver_name, receiver_phone, receiver_post_code, 
+    receiver_province_id, receiver_city, receiver_region, receiver_street, receiver_detail_address, 
+    remark, confirm_status, confirm_time, comment, comment_time, comment_star_level, 
+    payment_time, logistics_time, use_integration, auto_confirm_time, bill_type, bill_header, 
+    taxpayer_identification_num, bill_receiver_email, bill_receiver_phones, promotion_info, 
+    promotion_amount, integration_amount, coupon_amount, discount_amount, update_time, 
+    create_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ORDER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ORDER_INFO
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ORDER_INFO
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfoExample">
+    delete from ORDER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfo">
+    insert into ORDER_INFO (order_id, order_serial_num, user_id, 
+      order_type, order_status, order_source, 
+      order_amount_sum, pay_type, pay_amount, 
+      actual_pay_amount, freight_amount, shop_id, 
+      logistics_company_id, logistics_serial_num, 
+      integration, beans, receiver_name, 
+      receiver_phone, receiver_post_code, receiver_province_id, 
+      receiver_city, receiver_region, receiver_street, 
+      receiver_detail_address, remark, confirm_status, 
+      confirm_time, comment, comment_time, 
+      comment_star_level, payment_time, logistics_time, 
+      use_integration, auto_confirm_time, bill_type, 
+      bill_header, taxpayer_identification_num, 
+      bill_receiver_email, bill_receiver_phones, 
+      promotion_info, promotion_amount, integration_amount, 
+      coupon_amount, discount_amount, update_time, 
+      create_time)
+    values (#{orderId,jdbcType=INTEGER}, #{orderSerialNum,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{orderType,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{orderSource,jdbcType=INTEGER}, 
+      #{orderAmountSum,jdbcType=DECIMAL}, #{payType,jdbcType=INTEGER}, #{payAmount,jdbcType=DECIMAL}, 
+      #{actualPayAmount,jdbcType=DECIMAL}, #{freightAmount,jdbcType=DECIMAL}, #{shopId,jdbcType=INTEGER}, 
+      #{logisticsCompanyId,jdbcType=INTEGER}, #{logisticsSerialNum,jdbcType=VARCHAR}, 
+      #{integration,jdbcType=INTEGER}, #{beans,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
+      #{receiverPhone,jdbcType=VARCHAR}, #{receiverPostCode,jdbcType=VARCHAR}, #{receiverProvinceId,jdbcType=INTEGER}, 
+      #{receiverCity,jdbcType=INTEGER}, #{receiverRegion,jdbcType=INTEGER}, #{receiverStreet,jdbcType=INTEGER}, 
+      #{receiverDetailAddress,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{confirmStatus,jdbcType=INTEGER}, 
+      #{confirmTime,jdbcType=TIMESTAMP}, #{comment,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP}, 
+      #{commentStarLevel,jdbcType=INTEGER}, #{paymentTime,jdbcType=TIMESTAMP}, #{logisticsTime,jdbcType=TIMESTAMP}, 
+      #{useIntegration,jdbcType=INTEGER}, #{autoConfirmTime,jdbcType=TIMESTAMP}, #{billType,jdbcType=INTEGER}, 
+      #{billHeader,jdbcType=VARCHAR}, #{taxpayerIdentificationNum,jdbcType=VARCHAR}, 
+      #{billReceiverEmail,jdbcType=VARCHAR}, #{billReceiverPhones,jdbcType=VARCHAR}, 
+      #{promotionInfo,jdbcType=VARCHAR}, #{promotionAmount,jdbcType=DECIMAL}, #{integrationAmount,jdbcType=DECIMAL}, 
+      #{couponAmount,jdbcType=DECIMAL}, #{discountAmount,jdbcType=DECIMAL}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfo">
+    insert into ORDER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="orderSerialNum != null">
+        order_serial_num,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="orderType != null">
+        order_type,
+      </if>
+      <if test="orderStatus != null">
+        order_status,
+      </if>
+      <if test="orderSource != null">
+        order_source,
+      </if>
+      <if test="orderAmountSum != null">
+        order_amount_sum,
+      </if>
+      <if test="payType != null">
+        pay_type,
+      </if>
+      <if test="payAmount != null">
+        pay_amount,
+      </if>
+      <if test="actualPayAmount != null">
+        actual_pay_amount,
+      </if>
+      <if test="freightAmount != null">
+        freight_amount,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="logisticsCompanyId != null">
+        logistics_company_id,
+      </if>
+      <if test="logisticsSerialNum != null">
+        logistics_serial_num,
+      </if>
+      <if test="integration != null">
+        integration,
+      </if>
+      <if test="beans != null">
+        beans,
+      </if>
+      <if test="receiverName != null">
+        receiver_name,
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone,
+      </if>
+      <if test="receiverPostCode != null">
+        receiver_post_code,
+      </if>
+      <if test="receiverProvinceId != null">
+        receiver_province_id,
+      </if>
+      <if test="receiverCity != null">
+        receiver_city,
+      </if>
+      <if test="receiverRegion != null">
+        receiver_region,
+      </if>
+      <if test="receiverStreet != null">
+        receiver_street,
+      </if>
+      <if test="receiverDetailAddress != null">
+        receiver_detail_address,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="confirmStatus != null">
+        confirm_status,
+      </if>
+      <if test="confirmTime != null">
+        confirm_time,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="commentTime != null">
+        comment_time,
+      </if>
+      <if test="commentStarLevel != null">
+        comment_star_level,
+      </if>
+      <if test="paymentTime != null">
+        payment_time,
+      </if>
+      <if test="logisticsTime != null">
+        logistics_time,
+      </if>
+      <if test="useIntegration != null">
+        use_integration,
+      </if>
+      <if test="autoConfirmTime != null">
+        auto_confirm_time,
+      </if>
+      <if test="billType != null">
+        bill_type,
+      </if>
+      <if test="billHeader != null">
+        bill_header,
+      </if>
+      <if test="taxpayerIdentificationNum != null">
+        taxpayer_identification_num,
+      </if>
+      <if test="billReceiverEmail != null">
+        bill_receiver_email,
+      </if>
+      <if test="billReceiverPhones != null">
+        bill_receiver_phones,
+      </if>
+      <if test="promotionInfo != null">
+        promotion_info,
+      </if>
+      <if test="promotionAmount != null">
+        promotion_amount,
+      </if>
+      <if test="integrationAmount != null">
+        integration_amount,
+      </if>
+      <if test="couponAmount != null">
+        coupon_amount,
+      </if>
+      <if test="discountAmount != null">
+        discount_amount,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="orderSerialNum != null">
+        #{orderSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmountSum != null">
+        #{orderAmountSum,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payAmount != null">
+        #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualPayAmount != null">
+        #{actualPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freightAmount != null">
+        #{freightAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCompanyId != null">
+        #{logisticsCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsSerialNum != null">
+        #{logisticsSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="integration != null">
+        #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="beans != null">
+        #{beans,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null">
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPostCode != null">
+        #{receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverProvinceId != null">
+        #{receiverProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverCity != null">
+        #{receiverCity,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRegion != null">
+        #{receiverRegion,jdbcType=INTEGER},
+      </if>
+      <if test="receiverStreet != null">
+        #{receiverStreet,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDetailAddress != null">
+        #{receiverDetailAddress,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmStatus != null">
+        #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="confirmTime != null">
+        #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentStarLevel != null">
+        #{commentStarLevel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTime != null">
+        #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsTime != null">
+        #{logisticsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useIntegration != null">
+        #{useIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="autoConfirmTime != null">
+        #{autoConfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null">
+        #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="billHeader != null">
+        #{billHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerIdentificationNum != null">
+        #{taxpayerIdentificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="billReceiverEmail != null">
+        #{billReceiverEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="billReceiverPhones != null">
+        #{billReceiverPhones,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionInfo != null">
+        #{promotionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionAmount != null">
+        #{promotionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="integrationAmount != null">
+        #{integrationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount != null">
+        #{couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null">
+        #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfoExample" resultType="java.lang.Integer">
+    select count(*) from ORDER_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ORDER_INFO
+    <set>
+      <if test="record.orderId != null">
+        order_id = #{record.orderId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderSerialNum != null">
+        order_serial_num = #{record.orderSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderType != null">
+        order_type = #{record.orderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderStatus != null">
+        order_status = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderSource != null">
+        order_source = #{record.orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderAmountSum != null">
+        order_amount_sum = #{record.orderAmountSum,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payType != null">
+        pay_type = #{record.payType,jdbcType=INTEGER},
+      </if>
+      <if test="record.payAmount != null">
+        pay_amount = #{record.payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.actualPayAmount != null">
+        actual_pay_amount = #{record.actualPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.freightAmount != null">
+        freight_amount = #{record.freightAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsCompanyId != null">
+        logistics_company_id = #{record.logisticsCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsSerialNum != null">
+        logistics_serial_num = #{record.logisticsSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.integration != null">
+        integration = #{record.integration,jdbcType=INTEGER},
+      </if>
+      <if test="record.beans != null">
+        beans = #{record.beans,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverName != null">
+        receiver_name = #{record.receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverPhone != null">
+        receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverPostCode != null">
+        receiver_post_code = #{record.receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiverProvinceId != null">
+        receiver_province_id = #{record.receiverProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverCity != null">
+        receiver_city = #{record.receiverCity,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverRegion != null">
+        receiver_region = #{record.receiverRegion,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverStreet != null">
+        receiver_street = #{record.receiverStreet,jdbcType=INTEGER},
+      </if>
+      <if test="record.receiverDetailAddress != null">
+        receiver_detail_address = #{record.receiverDetailAddress,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.confirmStatus != null">
+        confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.confirmTime != null">
+        confirm_time = #{record.confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.comment != null">
+        comment = #{record.comment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.commentTime != null">
+        comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.commentStarLevel != null">
+        comment_star_level = #{record.commentStarLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentTime != null">
+        payment_time = #{record.paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logisticsTime != null">
+        logistics_time = #{record.logisticsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.useIntegration != null">
+        use_integration = #{record.useIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="record.autoConfirmTime != null">
+        auto_confirm_time = #{record.autoConfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.billType != null">
+        bill_type = #{record.billType,jdbcType=INTEGER},
+      </if>
+      <if test="record.billHeader != null">
+        bill_header = #{record.billHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxpayerIdentificationNum != null">
+        taxpayer_identification_num = #{record.taxpayerIdentificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billReceiverEmail != null">
+        bill_receiver_email = #{record.billReceiverEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billReceiverPhones != null">
+        bill_receiver_phones = #{record.billReceiverPhones,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotionInfo != null">
+        promotion_info = #{record.promotionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.promotionAmount != null">
+        promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.integrationAmount != null">
+        integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.couponAmount != null">
+        coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountAmount != null">
+        discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ORDER_INFO
+    set order_id = #{record.orderId,jdbcType=INTEGER},
+      order_serial_num = #{record.orderSerialNum,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      order_type = #{record.orderType,jdbcType=INTEGER},
+      order_status = #{record.orderStatus,jdbcType=INTEGER},
+      order_source = #{record.orderSource,jdbcType=INTEGER},
+      order_amount_sum = #{record.orderAmountSum,jdbcType=DECIMAL},
+      pay_type = #{record.payType,jdbcType=INTEGER},
+      pay_amount = #{record.payAmount,jdbcType=DECIMAL},
+      actual_pay_amount = #{record.actualPayAmount,jdbcType=DECIMAL},
+      freight_amount = #{record.freightAmount,jdbcType=DECIMAL},
+      shop_id = #{record.shopId,jdbcType=INTEGER},
+      logistics_company_id = #{record.logisticsCompanyId,jdbcType=INTEGER},
+      logistics_serial_num = #{record.logisticsSerialNum,jdbcType=VARCHAR},
+      integration = #{record.integration,jdbcType=INTEGER},
+      beans = #{record.beans,jdbcType=INTEGER},
+      receiver_name = #{record.receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{record.receiverPhone,jdbcType=VARCHAR},
+      receiver_post_code = #{record.receiverPostCode,jdbcType=VARCHAR},
+      receiver_province_id = #{record.receiverProvinceId,jdbcType=INTEGER},
+      receiver_city = #{record.receiverCity,jdbcType=INTEGER},
+      receiver_region = #{record.receiverRegion,jdbcType=INTEGER},
+      receiver_street = #{record.receiverStreet,jdbcType=INTEGER},
+      receiver_detail_address = #{record.receiverDetailAddress,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      confirm_status = #{record.confirmStatus,jdbcType=INTEGER},
+      confirm_time = #{record.confirmTime,jdbcType=TIMESTAMP},
+      comment = #{record.comment,jdbcType=VARCHAR},
+      comment_time = #{record.commentTime,jdbcType=TIMESTAMP},
+      comment_star_level = #{record.commentStarLevel,jdbcType=INTEGER},
+      payment_time = #{record.paymentTime,jdbcType=TIMESTAMP},
+      logistics_time = #{record.logisticsTime,jdbcType=TIMESTAMP},
+      use_integration = #{record.useIntegration,jdbcType=INTEGER},
+      auto_confirm_time = #{record.autoConfirmTime,jdbcType=TIMESTAMP},
+      bill_type = #{record.billType,jdbcType=INTEGER},
+      bill_header = #{record.billHeader,jdbcType=VARCHAR},
+      taxpayer_identification_num = #{record.taxpayerIdentificationNum,jdbcType=VARCHAR},
+      bill_receiver_email = #{record.billReceiverEmail,jdbcType=VARCHAR},
+      bill_receiver_phones = #{record.billReceiverPhones,jdbcType=VARCHAR},
+      promotion_info = #{record.promotionInfo,jdbcType=VARCHAR},
+      promotion_amount = #{record.promotionAmount,jdbcType=DECIMAL},
+      integration_amount = #{record.integrationAmount,jdbcType=DECIMAL},
+      coupon_amount = #{record.couponAmount,jdbcType=DECIMAL},
+      discount_amount = #{record.discountAmount,jdbcType=DECIMAL},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfo">
+    update ORDER_INFO
+    <set>
+      <if test="orderSerialNum != null">
+        order_serial_num = #{orderSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null">
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="orderSource != null">
+        order_source = #{orderSource,jdbcType=INTEGER},
+      </if>
+      <if test="orderAmountSum != null">
+        order_amount_sum = #{orderAmountSum,jdbcType=DECIMAL},
+      </if>
+      <if test="payType != null">
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="payAmount != null">
+        pay_amount = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualPayAmount != null">
+        actual_pay_amount = #{actualPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="freightAmount != null">
+        freight_amount = #{freightAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCompanyId != null">
+        logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsSerialNum != null">
+        logistics_serial_num = #{logisticsSerialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="integration != null">
+        integration = #{integration,jdbcType=INTEGER},
+      </if>
+      <if test="beans != null">
+        beans = #{beans,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null">
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null">
+        receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPostCode != null">
+        receiver_post_code = #{receiverPostCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverProvinceId != null">
+        receiver_province_id = #{receiverProvinceId,jdbcType=INTEGER},
+      </if>
+      <if test="receiverCity != null">
+        receiver_city = #{receiverCity,jdbcType=INTEGER},
+      </if>
+      <if test="receiverRegion != null">
+        receiver_region = #{receiverRegion,jdbcType=INTEGER},
+      </if>
+      <if test="receiverStreet != null">
+        receiver_street = #{receiverStreet,jdbcType=INTEGER},
+      </if>
+      <if test="receiverDetailAddress != null">
+        receiver_detail_address = #{receiverDetailAddress,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="confirmStatus != null">
+        confirm_status = #{confirmStatus,jdbcType=INTEGER},
+      </if>
+      <if test="confirmTime != null">
+        confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="commentTime != null">
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentStarLevel != null">
+        comment_star_level = #{commentStarLevel,jdbcType=INTEGER},
+      </if>
+      <if test="paymentTime != null">
+        payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logisticsTime != null">
+        logistics_time = #{logisticsTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="useIntegration != null">
+        use_integration = #{useIntegration,jdbcType=INTEGER},
+      </if>
+      <if test="autoConfirmTime != null">
+        auto_confirm_time = #{autoConfirmTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billType != null">
+        bill_type = #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="billHeader != null">
+        bill_header = #{billHeader,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayerIdentificationNum != null">
+        taxpayer_identification_num = #{taxpayerIdentificationNum,jdbcType=VARCHAR},
+      </if>
+      <if test="billReceiverEmail != null">
+        bill_receiver_email = #{billReceiverEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="billReceiverPhones != null">
+        bill_receiver_phones = #{billReceiverPhones,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionInfo != null">
+        promotion_info = #{promotionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="promotionAmount != null">
+        promotion_amount = #{promotionAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="integrationAmount != null">
+        integration_amount = #{integrationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="couponAmount != null">
+        coupon_amount = #{couponAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountAmount != null">
+        discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.OrderInfo">
+    update ORDER_INFO
+    set order_serial_num = #{orderSerialNum,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      order_type = #{orderType,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      order_source = #{orderSource,jdbcType=INTEGER},
+      order_amount_sum = #{orderAmountSum,jdbcType=DECIMAL},
+      pay_type = #{payType,jdbcType=INTEGER},
+      pay_amount = #{payAmount,jdbcType=DECIMAL},
+      actual_pay_amount = #{actualPayAmount,jdbcType=DECIMAL},
+      freight_amount = #{freightAmount,jdbcType=DECIMAL},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER},
+      logistics_serial_num = #{logisticsSerialNum,jdbcType=VARCHAR},
+      integration = #{integration,jdbcType=INTEGER},
+      beans = #{beans,jdbcType=INTEGER},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+      receiver_post_code = #{receiverPostCode,jdbcType=VARCHAR},
+      receiver_province_id = #{receiverProvinceId,jdbcType=INTEGER},
+      receiver_city = #{receiverCity,jdbcType=INTEGER},
+      receiver_region = #{receiverRegion,jdbcType=INTEGER},
+      receiver_street = #{receiverStreet,jdbcType=INTEGER},
+      receiver_detail_address = #{receiverDetailAddress,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      confirm_status = #{confirmStatus,jdbcType=INTEGER},
+      confirm_time = #{confirmTime,jdbcType=TIMESTAMP},
+      comment = #{comment,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_star_level = #{commentStarLevel,jdbcType=INTEGER},
+      payment_time = #{paymentTime,jdbcType=TIMESTAMP},
+      logistics_time = #{logisticsTime,jdbcType=TIMESTAMP},
+      use_integration = #{useIntegration,jdbcType=INTEGER},
+      auto_confirm_time = #{autoConfirmTime,jdbcType=TIMESTAMP},
+      bill_type = #{billType,jdbcType=INTEGER},
+      bill_header = #{billHeader,jdbcType=VARCHAR},
+      taxpayer_identification_num = #{taxpayerIdentificationNum,jdbcType=VARCHAR},
+      bill_receiver_email = #{billReceiverEmail,jdbcType=VARCHAR},
+      bill_receiver_phones = #{billReceiverPhones,jdbcType=VARCHAR},
+      promotion_info = #{promotionInfo,jdbcType=VARCHAR},
+      promotion_amount = #{promotionAmount,jdbcType=DECIMAL},
+      integration_amount = #{integrationAmount,jdbcType=DECIMAL},
+      coupon_amount = #{couponAmount,jdbcType=DECIMAL},
+      discount_amount = #{discountAmount,jdbcType=DECIMAL},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

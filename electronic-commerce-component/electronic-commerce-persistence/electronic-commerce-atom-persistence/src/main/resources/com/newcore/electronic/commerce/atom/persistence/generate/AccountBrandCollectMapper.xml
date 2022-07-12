@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.AccountBrandCollectMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollect">
+    <id column="account_brand_collect_id" jdbcType="INTEGER" property="accountBrandCollectId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    account_brand_collect_id, user_id, brand_id, delete_flag, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollectExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ACCOUNT_BRAND_COLLECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ACCOUNT_BRAND_COLLECT
+    where account_brand_collect_id = #{accountBrandCollectId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ACCOUNT_BRAND_COLLECT
+    where account_brand_collect_id = #{accountBrandCollectId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollectExample">
+    delete from ACCOUNT_BRAND_COLLECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollect">
+    insert into ACCOUNT_BRAND_COLLECT (account_brand_collect_id, user_id, brand_id, 
+      delete_flag, create_time, update_time
+      )
+    values (#{accountBrandCollectId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{brandId,jdbcType=INTEGER}, 
+      #{deleteFlag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollect">
+    insert into ACCOUNT_BRAND_COLLECT
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountBrandCollectId != null">
+        account_brand_collect_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="brandId != null">
+        brand_id,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountBrandCollectId != null">
+        #{accountBrandCollectId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollectExample" resultType="java.lang.Integer">
+    select count(*) from ACCOUNT_BRAND_COLLECT
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ACCOUNT_BRAND_COLLECT
+    <set>
+      <if test="record.accountBrandCollectId != null">
+        account_brand_collect_id = #{record.accountBrandCollectId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.brandId != null">
+        brand_id = #{record.brandId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleteFlag != null">
+        delete_flag = #{record.deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ACCOUNT_BRAND_COLLECT
+    set account_brand_collect_id = #{record.accountBrandCollectId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      brand_id = #{record.brandId,jdbcType=INTEGER},
+      delete_flag = #{record.deleteFlag,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollect">
+    update ACCOUNT_BRAND_COLLECT
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null">
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where account_brand_collect_id = #{accountBrandCollectId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.AccountBrandCollect">
+    update ACCOUNT_BRAND_COLLECT
+    set user_id = #{userId,jdbcType=INTEGER},
+      brand_id = #{brandId,jdbcType=INTEGER},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where account_brand_collect_id = #{accountBrandCollectId,jdbcType=INTEGER}
+  </update>
+</mapper>

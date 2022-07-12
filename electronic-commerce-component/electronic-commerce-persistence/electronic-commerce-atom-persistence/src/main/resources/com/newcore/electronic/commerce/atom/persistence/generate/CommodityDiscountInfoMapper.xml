@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.CommodityDiscountInfoMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfo">
+    <id column="commodity_discount_info_id" jdbcType="INTEGER" property="commodityDiscountInfoId" />
+    <result column="commodity_id" jdbcType="INTEGER" property="commodityId" />
+    <result column="commodity_discount" jdbcType="DECIMAL" property="commodityDiscount" />
+    <result column="discount_start_time" jdbcType="TIMESTAMP" property="discountStartTime" />
+    <result column="discount_end_time" jdbcType="TIMESTAMP" property="discountEndTime" />
+    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    commodity_discount_info_id, commodity_id, commodity_discount, discount_start_time, 
+    discount_end_time, del_flag, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from COMMODITY_DISCOUNT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from COMMODITY_DISCOUNT_INFO
+    where commodity_discount_info_id = #{commodityDiscountInfoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from COMMODITY_DISCOUNT_INFO
+    where commodity_discount_info_id = #{commodityDiscountInfoId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfoExample">
+    delete from COMMODITY_DISCOUNT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfo">
+    insert into COMMODITY_DISCOUNT_INFO (commodity_discount_info_id, commodity_id, 
+      commodity_discount, discount_start_time, 
+      discount_end_time, del_flag, create_time, 
+      update_time)
+    values (#{commodityDiscountInfoId,jdbcType=INTEGER}, #{commodityId,jdbcType=INTEGER}, 
+      #{commodityDiscount,jdbcType=DECIMAL}, #{discountStartTime,jdbcType=TIMESTAMP}, 
+      #{discountEndTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfo">
+    insert into COMMODITY_DISCOUNT_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="commodityDiscountInfoId != null">
+        commodity_discount_info_id,
+      </if>
+      <if test="commodityId != null">
+        commodity_id,
+      </if>
+      <if test="commodityDiscount != null">
+        commodity_discount,
+      </if>
+      <if test="discountStartTime != null">
+        discount_start_time,
+      </if>
+      <if test="discountEndTime != null">
+        discount_end_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="commodityDiscountInfoId != null">
+        #{commodityDiscountInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityId != null">
+        #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityDiscount != null">
+        #{commodityDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountStartTime != null">
+        #{discountStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountEndTime != null">
+        #{discountEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfoExample" resultType="java.lang.Integer">
+    select count(*) from COMMODITY_DISCOUNT_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update COMMODITY_DISCOUNT_INFO
+    <set>
+      <if test="record.commodityDiscountInfoId != null">
+        commodity_discount_info_id = #{record.commodityDiscountInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityId != null">
+        commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.commodityDiscount != null">
+        commodity_discount = #{record.commodityDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.discountStartTime != null">
+        discount_start_time = #{record.discountStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.discountEndTime != null">
+        discount_end_time = #{record.discountEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.delFlag != null">
+        del_flag = #{record.delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update COMMODITY_DISCOUNT_INFO
+    set commodity_discount_info_id = #{record.commodityDiscountInfoId,jdbcType=INTEGER},
+      commodity_id = #{record.commodityId,jdbcType=INTEGER},
+      commodity_discount = #{record.commodityDiscount,jdbcType=DECIMAL},
+      discount_start_time = #{record.discountStartTime,jdbcType=TIMESTAMP},
+      discount_end_time = #{record.discountEndTime,jdbcType=TIMESTAMP},
+      del_flag = #{record.delFlag,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfo">
+    update COMMODITY_DISCOUNT_INFO
+    <set>
+      <if test="commodityId != null">
+        commodity_id = #{commodityId,jdbcType=INTEGER},
+      </if>
+      <if test="commodityDiscount != null">
+        commodity_discount = #{commodityDiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="discountStartTime != null">
+        discount_start_time = #{discountStartTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountEndTime != null">
+        discount_end_time = #{discountEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commodity_discount_info_id = #{commodityDiscountInfoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.CommodityDiscountInfo">
+    update COMMODITY_DISCOUNT_INFO
+    set commodity_id = #{commodityId,jdbcType=INTEGER},
+      commodity_discount = #{commodityDiscount,jdbcType=DECIMAL},
+      discount_start_time = #{discountStartTime,jdbcType=TIMESTAMP},
+      discount_end_time = #{discountEndTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where commodity_discount_info_id = #{commodityDiscountInfoId,jdbcType=INTEGER}
+  </update>
+</mapper>

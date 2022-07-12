@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.LogisticsCompanyMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.LogisticsCompany">
+    <id column="logistics_company_id" jdbcType="INTEGER" property="logisticsCompanyId" />
+    <result column="logistics_company_name" jdbcType="VARCHAR" property="logisticsCompanyName" />
+    <result column="logistics_company_code" jdbcType="VARCHAR" property="logisticsCompanyCode" />
+    <result column="display_flag" jdbcType="INTEGER" property="displayFlag" />
+    <result column="sign_flag" jdbcType="INTEGER" property="signFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    logistics_company_id, logistics_company_name, logistics_company_code, display_flag, 
+    sign_flag, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompanyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from LOGISTICS_COMPANY
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from LOGISTICS_COMPANY
+    where logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from LOGISTICS_COMPANY
+    where logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompanyExample">
+    delete from LOGISTICS_COMPANY
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompany">
+    insert into LOGISTICS_COMPANY (logistics_company_id, logistics_company_name, 
+      logistics_company_code, display_flag, sign_flag, 
+      create_time, update_time)
+    values (#{logisticsCompanyId,jdbcType=INTEGER}, #{logisticsCompanyName,jdbcType=VARCHAR}, 
+      #{logisticsCompanyCode,jdbcType=VARCHAR}, #{displayFlag,jdbcType=INTEGER}, #{signFlag,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompany">
+    insert into LOGISTICS_COMPANY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logisticsCompanyId != null">
+        logistics_company_id,
+      </if>
+      <if test="logisticsCompanyName != null">
+        logistics_company_name,
+      </if>
+      <if test="logisticsCompanyCode != null">
+        logistics_company_code,
+      </if>
+      <if test="displayFlag != null">
+        display_flag,
+      </if>
+      <if test="signFlag != null">
+        sign_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logisticsCompanyId != null">
+        #{logisticsCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsCompanyName != null">
+        #{logisticsCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompanyCode != null">
+        #{logisticsCompanyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="displayFlag != null">
+        #{displayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="signFlag != null">
+        #{signFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompanyExample" resultType="java.lang.Integer">
+    select count(*) from LOGISTICS_COMPANY
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update LOGISTICS_COMPANY
+    <set>
+      <if test="record.logisticsCompanyId != null">
+        logistics_company_id = #{record.logisticsCompanyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.logisticsCompanyName != null">
+        logistics_company_name = #{record.logisticsCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logisticsCompanyCode != null">
+        logistics_company_code = #{record.logisticsCompanyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.displayFlag != null">
+        display_flag = #{record.displayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.signFlag != null">
+        sign_flag = #{record.signFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update LOGISTICS_COMPANY
+    set logistics_company_id = #{record.logisticsCompanyId,jdbcType=INTEGER},
+      logistics_company_name = #{record.logisticsCompanyName,jdbcType=VARCHAR},
+      logistics_company_code = #{record.logisticsCompanyCode,jdbcType=VARCHAR},
+      display_flag = #{record.displayFlag,jdbcType=INTEGER},
+      sign_flag = #{record.signFlag,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompany">
+    update LOGISTICS_COMPANY
+    <set>
+      <if test="logisticsCompanyName != null">
+        logistics_company_name = #{logisticsCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="logisticsCompanyCode != null">
+        logistics_company_code = #{logisticsCompanyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="displayFlag != null">
+        display_flag = #{displayFlag,jdbcType=INTEGER},
+      </if>
+      <if test="signFlag != null">
+        sign_flag = #{signFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.LogisticsCompany">
+    update LOGISTICS_COMPANY
+    set logistics_company_name = #{logisticsCompanyName,jdbcType=VARCHAR},
+      logistics_company_code = #{logisticsCompanyCode,jdbcType=VARCHAR},
+      display_flag = #{displayFlag,jdbcType=INTEGER},
+      sign_flag = #{signFlag,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where logistics_company_id = #{logisticsCompanyId,jdbcType=INTEGER}
+  </update>
+</mapper>

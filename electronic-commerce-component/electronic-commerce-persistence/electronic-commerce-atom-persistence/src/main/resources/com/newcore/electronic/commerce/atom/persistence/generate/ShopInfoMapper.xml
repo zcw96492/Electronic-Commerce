@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.ShopInfoMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.ShopInfo">
+    <id column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="legal_representative" jdbcType="VARCHAR" property="legalRepresentative" />
+    <result column="legal_representative_id_type" jdbcType="CHAR" property="legalRepresentativeIdType" />
+    <result column="legal_representative_id_no" jdbcType="VARCHAR" property="legalRepresentativeIdNo" />
+    <result column="legal_representative_phone" jdbcType="VARCHAR" property="legalRepresentativePhone" />
+    <result column="authentication_flag" jdbcType="INTEGER" property="authenticationFlag" />
+    <result column="authentication_date" jdbcType="TIMESTAMP" property="authenticationDate" />
+    <result column="shop_link_addr" jdbcType="VARCHAR" property="shopLinkAddr" />
+    <result column="office_phone" jdbcType="VARCHAR" property="officePhone" />
+    <result column="shop_star_level" jdbcType="VARCHAR" property="shopStarLevel" />
+    <result column="shop_language" jdbcType="VARCHAR" property="shopLanguage" />
+    <result column="shop_desc" jdbcType="VARCHAR" property="shopDesc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    shop_id, shop_name, legal_representative, legal_representative_id_type, legal_representative_id_no, 
+    legal_representative_phone, authentication_flag, authentication_date, shop_link_addr, 
+    office_phone, shop_star_level, shop_language, shop_desc, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SHOP_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SHOP_INFO
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from SHOP_INFO
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfoExample">
+    delete from SHOP_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfo">
+    insert into SHOP_INFO (shop_id, shop_name, legal_representative, 
+      legal_representative_id_type, legal_representative_id_no, 
+      legal_representative_phone, authentication_flag, 
+      authentication_date, shop_link_addr, office_phone, 
+      shop_star_level, shop_language, shop_desc, 
+      create_time, update_time)
+    values (#{shopId,jdbcType=INTEGER}, #{shopName,jdbcType=VARCHAR}, #{legalRepresentative,jdbcType=VARCHAR}, 
+      #{legalRepresentativeIdType,jdbcType=CHAR}, #{legalRepresentativeIdNo,jdbcType=VARCHAR}, 
+      #{legalRepresentativePhone,jdbcType=VARCHAR}, #{authenticationFlag,jdbcType=INTEGER}, 
+      #{authenticationDate,jdbcType=TIMESTAMP}, #{shopLinkAddr,jdbcType=VARCHAR}, #{officePhone,jdbcType=VARCHAR}, 
+      #{shopStarLevel,jdbcType=VARCHAR}, #{shopLanguage,jdbcType=VARCHAR}, #{shopDesc,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfo">
+    insert into SHOP_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative,
+      </if>
+      <if test="legalRepresentativeIdType != null">
+        legal_representative_id_type,
+      </if>
+      <if test="legalRepresentativeIdNo != null">
+        legal_representative_id_no,
+      </if>
+      <if test="legalRepresentativePhone != null">
+        legal_representative_phone,
+      </if>
+      <if test="authenticationFlag != null">
+        authentication_flag,
+      </if>
+      <if test="authenticationDate != null">
+        authentication_date,
+      </if>
+      <if test="shopLinkAddr != null">
+        shop_link_addr,
+      </if>
+      <if test="officePhone != null">
+        office_phone,
+      </if>
+      <if test="shopStarLevel != null">
+        shop_star_level,
+      </if>
+      <if test="shopLanguage != null">
+        shop_language,
+      </if>
+      <if test="shopDesc != null">
+        shop_desc,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativeIdType != null">
+        #{legalRepresentativeIdType,jdbcType=CHAR},
+      </if>
+      <if test="legalRepresentativeIdNo != null">
+        #{legalRepresentativeIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativePhone != null">
+        #{legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationFlag != null">
+        #{authenticationFlag,jdbcType=INTEGER},
+      </if>
+      <if test="authenticationDate != null">
+        #{authenticationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopLinkAddr != null">
+        #{shopLinkAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopStarLevel != null">
+        #{shopStarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLanguage != null">
+        #{shopLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDesc != null">
+        #{shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfoExample" resultType="java.lang.Integer">
+    select count(*) from SHOP_INFO
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SHOP_INFO
+    <set>
+      <if test="record.shopId != null">
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shopName != null">
+        shop_name = #{record.shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepresentative != null">
+        legal_representative = #{record.legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepresentativeIdType != null">
+        legal_representative_id_type = #{record.legalRepresentativeIdType,jdbcType=CHAR},
+      </if>
+      <if test="record.legalRepresentativeIdNo != null">
+        legal_representative_id_no = #{record.legalRepresentativeIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalRepresentativePhone != null">
+        legal_representative_phone = #{record.legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authenticationFlag != null">
+        authentication_flag = #{record.authenticationFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.authenticationDate != null">
+        authentication_date = #{record.authenticationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.shopLinkAddr != null">
+        shop_link_addr = #{record.shopLinkAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.officePhone != null">
+        office_phone = #{record.officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopStarLevel != null">
+        shop_star_level = #{record.shopStarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopLanguage != null">
+        shop_language = #{record.shopLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shopDesc != null">
+        shop_desc = #{record.shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SHOP_INFO
+    set shop_id = #{record.shopId,jdbcType=INTEGER},
+      shop_name = #{record.shopName,jdbcType=VARCHAR},
+      legal_representative = #{record.legalRepresentative,jdbcType=VARCHAR},
+      legal_representative_id_type = #{record.legalRepresentativeIdType,jdbcType=CHAR},
+      legal_representative_id_no = #{record.legalRepresentativeIdNo,jdbcType=VARCHAR},
+      legal_representative_phone = #{record.legalRepresentativePhone,jdbcType=VARCHAR},
+      authentication_flag = #{record.authenticationFlag,jdbcType=INTEGER},
+      authentication_date = #{record.authenticationDate,jdbcType=TIMESTAMP},
+      shop_link_addr = #{record.shopLinkAddr,jdbcType=VARCHAR},
+      office_phone = #{record.officePhone,jdbcType=VARCHAR},
+      shop_star_level = #{record.shopStarLevel,jdbcType=VARCHAR},
+      shop_language = #{record.shopLanguage,jdbcType=VARCHAR},
+      shop_desc = #{record.shopDesc,jdbcType=VARCHAR},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfo">
+    update SHOP_INFO
+    <set>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentative != null">
+        legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativeIdType != null">
+        legal_representative_id_type = #{legalRepresentativeIdType,jdbcType=CHAR},
+      </if>
+      <if test="legalRepresentativeIdNo != null">
+        legal_representative_id_no = #{legalRepresentativeIdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalRepresentativePhone != null">
+        legal_representative_phone = #{legalRepresentativePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationFlag != null">
+        authentication_flag = #{authenticationFlag,jdbcType=INTEGER},
+      </if>
+      <if test="authenticationDate != null">
+        authentication_date = #{authenticationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="shopLinkAddr != null">
+        shop_link_addr = #{shopLinkAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        office_phone = #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="shopStarLevel != null">
+        shop_star_level = #{shopStarLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="shopLanguage != null">
+        shop_language = #{shopLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="shopDesc != null">
+        shop_desc = #{shopDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.newcore.electronic.commerce.base.model.generate.ShopInfo">
+    update SHOP_INFO
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      legal_representative = #{legalRepresentative,jdbcType=VARCHAR},
+      legal_representative_id_type = #{legalRepresentativeIdType,jdbcType=CHAR},
+      legal_representative_id_no = #{legalRepresentativeIdNo,jdbcType=VARCHAR},
+      legal_representative_phone = #{legalRepresentativePhone,jdbcType=VARCHAR},
+      authentication_flag = #{authenticationFlag,jdbcType=INTEGER},
+      authentication_date = #{authenticationDate,jdbcType=TIMESTAMP},
+      shop_link_addr = #{shopLinkAddr,jdbcType=VARCHAR},
+      office_phone = #{officePhone,jdbcType=VARCHAR},
+      shop_star_level = #{shopStarLevel,jdbcType=VARCHAR},
+      shop_language = #{shopLanguage,jdbcType=VARCHAR},
+      shop_desc = #{shopDesc,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where shop_id = #{shopId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newcore.electronic.commerce.atom.persistence.generate.DictContrastMapper">
+  <resultMap id="BaseResultMap" type="com.newcore.electronic.commerce.base.model.generate.DictContrast">
+    <result column="dict_name" jdbcType="VARCHAR" property="dictName" />
+    <result column="dict_code" jdbcType="VARCHAR" property="dictCode" />
+    <result column="dict_description" jdbcType="VARCHAR" property="dictDescription" />
+    <result column="dict_enable_status" jdbcType="INTEGER" property="dictEnableStatus" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    dict_name, dict_code, dict_description, dict_enable_status, remark
+  </sql>
+  <select id="selectByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.DictContrastExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DICT_CONTRAST
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.DictContrastExample">
+    delete from DICT_CONTRAST
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.newcore.electronic.commerce.base.model.generate.DictContrast">
+    insert into DICT_CONTRAST (dict_name, dict_code, dict_description, 
+      dict_enable_status, remark)
+    values (#{dictName,jdbcType=VARCHAR}, #{dictCode,jdbcType=VARCHAR}, #{dictDescription,jdbcType=VARCHAR}, 
+      #{dictEnableStatus,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newcore.electronic.commerce.base.model.generate.DictContrast">
+    insert into DICT_CONTRAST
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dictName != null">
+        dict_name,
+      </if>
+      <if test="dictCode != null">
+        dict_code,
+      </if>
+      <if test="dictDescription != null">
+        dict_description,
+      </if>
+      <if test="dictEnableStatus != null">
+        dict_enable_status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dictName != null">
+        #{dictName,jdbcType=VARCHAR},
+      </if>
+      <if test="dictCode != null">
+        #{dictCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dictDescription != null">
+        #{dictDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="dictEnableStatus != null">
+        #{dictEnableStatus,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.newcore.electronic.commerce.base.model.generate.DictContrastExample" resultType="java.lang.Integer">
+    select count(*) from DICT_CONTRAST
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update DICT_CONTRAST
+    <set>
+      <if test="record.dictName != null">
+        dict_name = #{record.dictName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictCode != null">
+        dict_code = #{record.dictCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictDescription != null">
+        dict_description = #{record.dictDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dictEnableStatus != null">
+        dict_enable_status = #{record.dictEnableStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update DICT_CONTRAST
+    set dict_name = #{record.dictName,jdbcType=VARCHAR},
+      dict_code = #{record.dictCode,jdbcType=VARCHAR},
+      dict_description = #{record.dictDescription,jdbcType=VARCHAR},
+      dict_enable_status = #{record.dictEnableStatus,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
