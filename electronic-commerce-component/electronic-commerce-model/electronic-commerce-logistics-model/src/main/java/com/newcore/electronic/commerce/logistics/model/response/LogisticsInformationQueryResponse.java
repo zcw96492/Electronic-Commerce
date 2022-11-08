@@ -3,7 +3,6 @@ package com.newcore.electronic.commerce.logistics.model.response;
 import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 import lombok.Data;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -14,6 +13,5 @@ import java.io.Serializable;
 @Data
 public class LogisticsInformationQueryResponse extends BaseModel implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 9046234564390749967L;
 }

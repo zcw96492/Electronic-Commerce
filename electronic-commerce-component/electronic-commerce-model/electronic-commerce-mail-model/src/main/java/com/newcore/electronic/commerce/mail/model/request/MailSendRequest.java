@@ -3,7 +3,6 @@ package com.newcore.electronic.commerce.mail.model.request;
 import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 import lombok.Data;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -14,6 +13,5 @@ import java.io.Serializable;
 @Data
 public class MailSendRequest extends BaseModel implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 4998851691334323474L;
 }

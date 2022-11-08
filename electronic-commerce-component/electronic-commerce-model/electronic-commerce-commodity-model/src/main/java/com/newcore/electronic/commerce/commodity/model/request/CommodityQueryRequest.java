@@ -3,7 +3,6 @@ package com.newcore.electronic.commerce.commodity.model.request;
 import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 import lombok.Data;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -13,6 +12,5 @@ import java.io.Serializable;
 @Data
 public class CommodityQueryRequest extends BaseModel implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = -1491271910102696084L;
 }

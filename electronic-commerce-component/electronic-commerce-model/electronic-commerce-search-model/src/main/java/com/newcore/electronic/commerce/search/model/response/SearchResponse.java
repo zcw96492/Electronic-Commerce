@@ -3,7 +3,6 @@ package com.newcore.electronic.commerce.search.model.response;
 import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 import lombok.Data;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -14,6 +13,5 @@ import java.io.Serializable;
 @Data
 public class SearchResponse extends BaseModel implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 7216652430865367448L;
 }

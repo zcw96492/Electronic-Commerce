@@ -2,7 +2,6 @@ package com.newcore.electronic.commerce.payment.model.response;
 
 import com.newcore.electronic.commerce.base.model.custom.BaseModel;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -12,6 +11,5 @@ import java.io.Serializable;
  */
 public class PaymentFlowQueryResponse extends BaseModel implements Serializable {
 
-    @Serial
     private static final long serialVersionUID = 8252755016159328474L;
 }
