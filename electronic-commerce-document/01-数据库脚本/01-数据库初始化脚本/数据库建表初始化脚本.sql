@@ -588,7 +588,7 @@ CREATE TABLE `COMMODITY_PLAN_TYPE` (
 -- 32.优惠券种类表
 CREATE TABLE `COUPON_TYPE` (
     `coupon_type_id` int(15) NOT NULL AUTO_INCREMENT COMMENT '优惠券种类ID',
-    `coupon_type` int(5) NULL DEFAULT NULL COMMENT '优惠券种类  0-满减券  1-折扣券  2-无条件立减券  3-代金券',
+    `coupon_type` int(5) NULL DEFAULT NULL COMMENT '优惠券种类  0-通用满减券;1-通用代金券;2-通用折扣券;3-品类满减券;4-品类代金券;5-品类折扣券;6-会员满减券;7-会员代金券;8-会员折扣券;9-新人首单满减券;10-新人首单代金券;11-新人首单折扣券',
     `coupon_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '优惠券规则描述',
     `coupon_amnt` decimal(10,2) UNSIGNED NULL DEFAULT NULL COMMENT '优惠券金额(作为代金券的金额)',
     `full_amnt` decimal(10,2) NULL COMMENT '满金额',
