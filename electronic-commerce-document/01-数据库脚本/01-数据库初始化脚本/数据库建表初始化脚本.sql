@@ -717,20 +717,6 @@ CREATE TABLE `SHOP_COMMODITY_REGISTER` (
 
 -- 八、批作业相关信息表
 -- 41.批作业任务表
-CREATE TABLE `td_batch_task` (
-    `batch_task_id` bigint(15) NOT NULL AUTO_INCREMENT COMMENT '批作业任务ID',
-    `task_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '批作业任务名称',
-    `task_description` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '批作业任务描述',
-    `task_cron_expression` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'cron定时器表达式',
-    `bean_class_path` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '任务执行时调用哪个类的方法(包名 + 类名)',
-    `job_status` int(10) NOT NULL DEFAULT 0 COMMENT '任务状态(0-未启动，1-正常运行，2-停用下线)',
-    `job_group` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '任务分组',
-    `create_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '批作业任务创建者',
-    `create_time` datetime NOT NULL COMMENT '创建时间',
-    `update_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '批作业任务更新者',
-    `update_time` datetime NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-    PRIMARY KEY (`batch_task_id`)
-) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '批作业任务表';
 
 
 -- 42.批作业执行记录表
@@ -776,18 +762,18 @@ CREATE TABLE `DICT_CONTRAST` (
 
 
 -- 46.批作业任务表
-CREATE TABLE BATCH_TASK
+CREATE TABLE `BATCH_TASK`
 (
-    BATCH_TASK_ID        bigint(15) NOT NULL AUTO_INCREMENT COMMENT '批作业任务ID',
-    TASK_NAME            varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务名称',
-    TASK_DESCRIPTION     varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务描述',
-    TASK_CRON_EXPRESSION varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'CRON定时器表达式',
-    BEAN_CLASS_PATH      varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '任务执行时调用哪个类的方法(包名 + 类名)',
-    JOB_STATUS           int(10) NOT NULL DEFAULT 0 COMMENT '任务状态(0-未启动，1-正常运行，2-停用下线)',
-    JOB_GROUP            varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '任务分组',
-    CREATE_USER          varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务创建者',
-    CREATE_TIME          datetime NOT NULL COMMENT '创建时间',
-    UPDATE_USER          varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL COMMENT '批作业任务更新者',
-    UPDATE_TIME          datetime NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+    `BATCH_TASK_ID`        bigint(15) NOT NULL AUTO_INCREMENT COMMENT '批作业任务ID',
+    `TASK_NAME`            varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务名称',
+    `TASK_DESCRIPTION`     varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务描述',
+    `TASK_CRON_EXPRESSION` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT 'CRON定时器表达式',
+    `BEAN_CLASS_PATH`      varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '任务执行时调用哪个类的方法(包名 + 类名)',
+    `JOB_STATUS`           int(10) NOT NULL DEFAULT 0 COMMENT '任务状态(0-未启动，1-正常运行，2-停用下线)',
+    `JOB_GROUP`            varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '任务分组',
+    `CREATE_USER`          varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '批作业任务创建者',
+    `CREATE_TIME`          datetime NOT NULL COMMENT '创建时间',
+    `UPDATE_USER`          varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NULL COMMENT '批作业任务更新者',
+    `UPDATE_TIME`          datetime NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`BATCH_TASK_ID`)
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin COMMENT = '批作业任务表';
